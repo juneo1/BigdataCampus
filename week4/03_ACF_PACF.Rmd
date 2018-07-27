@@ -1,0 +1,80 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# 상관분석
+```{r}
+install.packages("plotly")
+library(plotly)
+
+dx <- c(-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9)
+dy <- c(-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9)
+
+mat_dx <- matrix(rep(dx, 19), nrow = 19, byrow = T)
+mat_dy <- matrix(rep(dy, 19), nrow = 19, byrow = F)
+
+mat_xy <- mat_dx * mat_dy
+space <- mat_xy[19:1, 19:1]
+
+plot_ly(z=space) %>% add_surface()
+
+```
+
+
+
+### ACF(Auto Correlation)
++ 현재시점과 과거시점 간의 상관관계를 나타내는 방법
++ 과거의 데이터와 현재의 데이터가 선형적인 관계를 나타내는가?
+
+```{r}
+tData <- c(409,289,509,364,404,445,310,372,440,414,380,598,418,359,432,252,446,473,337,478)
+
+cor( data.frame(tData[3:20], tData[2:19], tData[1:18]))
+
+tData.acf <- acf(tData)
+tData.acf$acf
+
+```
+
+
+
+# PACF (Partial Auto Correlation Function)
++ 교회의 숫자와 범죄수 와의 관계
++ 또 다른 설명변수
++ 인구
+
+> Partial Correlation (부분상관)
+
+교회수 = 인구수 * 교회와의 상관성(a1) + 상수(a0)
+범죄수 = 인구수 * 인구와의 상관성(b1) + 상수(a1)
+
+상수(a0) = 교회수 - 인구수*교회와 인구의 상관성(a1)
+         = 교회 숫자에서 인구와의 상관성을 뺀 나머지
+
+```{r}
+
+X <- c(2,4,15,20)
+Y <- c(1,2,3,4)
+P <- c(100,120,150,200)
+
+cor(X,Y)
+
+nm1 <- lm(X~P)
+nm2 <- lm(Y~P)
+
+res.X <- nm1$residuals
+res.Y <- nm2$residuals
+
+res.X
+res.Y
+
+cor(res.X, res.Y)
+
+```
+
+
+
+
+
+

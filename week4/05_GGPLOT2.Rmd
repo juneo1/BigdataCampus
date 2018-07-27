@@ -1,0 +1,30 @@
+---
+title: "GGPLOT2"
+output: html_notebook
+---
+
+```{r}
+install.packages("tidyverse")
+library(tidyverse)
+```
+
+
+#mpg dataset
+```{r}
+mpg
+```
+
+#economics dataset
+```{r}
+economics
+```
+
+
+```{r}
+ggplot(mpg, mapping=aes(hwy)) + geom_density()
+```
+
+```{r}
+ggplot()
+```
+

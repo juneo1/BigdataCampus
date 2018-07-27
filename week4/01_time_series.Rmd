@@ -1,0 +1,18 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Introduction
+: 데이터 사이언스를 위한 마크다운 형식
+
+
+### How it works
++ R 코드는 ```으로 감싼다
++ text는 일반 텍스트 형식을 따른다
+
+### 코드 chunk
+```{r}
+iris
+plot(iris$Sepal.Length)
+```

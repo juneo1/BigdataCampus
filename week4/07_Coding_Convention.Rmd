@@ -1,0 +1,70 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+> http://dialektike.github.io/Rguide.xml
+
+# 변수 이름 규칙 
+ + 첫글자는 알파벳 또는 .으로 시작해야한다.
+ 
+```{r}
+# .a 
+# a
+# a, b, a1, b1, .x
+```
+
+# 파일명은 의미가 있어야 한다.
+```{r}
+# 01_perprocess.R
+```
+
+# 코딩의 한줄은 80자 내외로 한다.
+```{r}
+000000000000000000000000000000000000000000000000000000000000000000000000
+```
+
+
+# 코드의 줄을 맞출때는 스페이스와 탭을 혼용해서 쓰지 않는다. TAB을 쓰는 것을 추천
+```{r}
+if(TRUE){
+  a <- 10
+}
+```
+
+
+# 연사자의 앞뒤는 공백으로 띄워준다.
+```{r}
+a <- sort( iris[ , "Species" ] )
+```
+
+
+# if문과 else문은 중괄호를 사용하고, 줄바꿈을 사용하지 않는다.
+
+```{r}
+condition <- TRUE
+if( condition ) {
+  print( "True")
+  
+}else{
+  print( "False")
+}
+
+```
+
+
+# 변수명을 쓰는 방법을 통일하고, 변수는 명사로, 함수는 동사로 
++ snake_naming
++ camelTow
++ r.variable
+```{r}
+
+```
+
+
+# 할당기호는 <-로 통일
+```{r}
+a = 3 # bad
+b <- 5 # good
+```
+

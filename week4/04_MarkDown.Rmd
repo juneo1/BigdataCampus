@@ -1,0 +1,39 @@
+---
+title: "R MarkDown"
+output: html_notebook
+---
+
+#마크다운에서는 #하나가 제목
+
+> 안녕하세요 바보
+
+***
+
+# 제목1
++ 항목1
++ 항목2
+  
+  
+## 제목2
+
+1. 항목3
+2. 항목4
+
+
+### 제목3
+
+
+```{r eval=TRUE}
+install.packages("tidyverse")
+library(tidyverse)
+iris
+Sys.getlocale(category = "LC_ALL")
+```
+
+
+#### 제목4
+![](C:\Users\DKU\Desktop\google.png)
+
+
+##### 제목5
+[구글 링크는 이곳을 참조](https://www.google.com)

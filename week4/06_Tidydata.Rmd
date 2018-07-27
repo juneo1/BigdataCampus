@@ -1,0 +1,94 @@
+---
+title: "Tidy data with tidyr"
+output: html_notebook
+---
+
+> Happy families are all alike; everybody
+
+# 분석하기 좋은 데이터의 조건
+1. 결측값(NA)가 없어야 한다. 
+ + Explicit N/A (명백한)
+ + Implicit N/A (명백하지 않은)
+ 
+2.Tidy함을 만족
+ + 하나의 열에 하나의 속성
+ + 하나의 행에 하나의 관측
+ + 하나의 셀에 하나의 데이터
+
+# Tidy Data
+```{r}
+library(tidyverse)
+table1
+table2 
+table3 
+table4a 
+table4b
+
+```
+
+#mutating
+
+```{r}
+table1 %>%
+  mutate(rate = cases / population * 10000)
+```
+
+# Gathering
+
+```{r}
+table4a
+table4a %>%
+  gather( "1999", "2000", key = "year", value = "cases" )
+#>%>
+#  arrange(country) %>%
+#  select(country, year)
+
+```
+
+```{r}
+table4b %>%
+  gather("1999", "2000", key = "year", value = "population")
+```
+
+# spreading
+```{r}
+table2 %>%
+  spread( key = type, value = count)
+```
+
+# seperating
+```{r}
+table3 %>%
+  separate(
+    year,
+    into = c("century", "decade", "year"),
+    sep = c(2,3)
+  ) %>%
+  separate(
+    rate,
+    into = c("case", "population"),
+    sep = c("/"),
+    convert = TRUE
+  )
+
+```
+
+
+
+# unite()
+```{r}
+table5 %>%
+  unite(
+    dt,
+    century, year, 
+    sep = ""
+  ) %>%
+  separate(
+    rate, 
+    into = c("case", "population"),
+    sep ="/",
+    convert = TRUE
+  )
+
+```
+

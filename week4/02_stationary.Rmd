@@ -1,0 +1,44 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+install.packages("astsa")
+library(astsa)
+```
+
+# 정상성(Stationary)
++ 데이터가 안정적인가에 대한 모델 방법
++ 어느 구간이든 평균이 일정
++ 어느 구간이든 분산이 일정(상수)
+
+# 정상성의 예제
+```{r}
+rank.arsenal <- c(4,3,4,4,3,2,5,6)
+rank.liverpool <- c(6,8,7,2,6,9,8,2)
+
+plot(rank.arsenal, type = "l", ylim = c(20,0))
+lines(rank.liverpool, col=2)
+
+mean(rank.arsenal)
+sd(rank.arsenal)
+
+mean(rank.liverpool)
+sd(rank.liverpool)
+
+```
+
+
+
+```{r}
+install.packages("aTSA")
+library("aTSA")
+library(stats)
+
+
+adf.test(rank.arsenal)
+adf.test(rank.liverpool)
+
+```
+
